@@ -1,5 +1,8 @@
 package hello.core;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import hello.core.dicount.DiscountPolicy;
 import hello.core.dicount.FixDiscountPolicy;
 import hello.core.dicount.RateDiscountPolicy;
@@ -10,20 +13,25 @@ import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 
+@Configuration
 public class AppConfig {
 
+	@Bean
 	public MemberService memberService() {
 		return new MemberServiceImpl(memberRepository());
 	}//커맨드 옵션 m -> 리팩토링 기능
 
-	private MemberRepository memberRepository() {
+	@Bean
+	public MemberRepository memberRepository() {
 		return new MemoryMemberRepository();
 	}
 
+	@Bean
 	public OrderService orderService() {
 		return new OrderServiceImpl(memberRepository(), discountPolicy());
 	}
 
+	@Bean
 	public DiscountPolicy discountPolicy() {
 		// return new FixDiscountPolicy();
 		return  new RateDiscountPolicy();
