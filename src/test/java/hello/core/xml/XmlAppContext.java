@@ -1,4 +1,4 @@
-package xml;
+package hello.core.xml;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
