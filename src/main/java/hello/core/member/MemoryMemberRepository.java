@@ -3,6 +3,9 @@ package hello.core.member;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemoryMemberRepository implements MemberRepository{
 
 	private static Map<Long, Member> store = new HashMap<>(); //이러면 동시성 이유가 생김 컨퀄해쉬맵을 사용해야함 나중에 공부해보기
